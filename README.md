@@ -2,14 +2,32 @@
 
 ## Prerequisites
 
-1. First we want to make sure that we `java` and `mvn` installed; and if one of them is not, we need to install them. To do that let's run the following:
+Most likely your environment is already configured to use Java and Maven. Follow the steps below to confirm it.
+
+1. We need to have `Java 8+` installed. To verify installation run:
     ```
     java -version
     ```
-    and then
+    You should see something similar to this:
+    ```
+    openjdk version "11" 2018-09-25
+    OpenJDK Runtime Environment 18.9 (build 11+28)
+    OpenJDK 64-Bit Server VM 18.9 (build 11+28, mixed mode)
+    ```
+    If you don't, go ahead and install Java and make sure to set your `PATH` environment variable correctly.
+1. We need to have `mvn` installed. To verify installation run:
     ```
     mvn --version
     ```
+    You should see something similar to this:
+    ```
+    Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
+    Maven home: C:\Program Files\apache-maven\bin\..
+    Java version: 11, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jdk-11
+    Default locale: en_US, platform encoding: Cp1252
+    OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
+    ```
+    If you don't, go ahead and install Maven and make sure to set your `JAVA_HOME` environment variable correctly.
 1. Since Maven Central is not supported by your organization, you need to make sure you point your Maven settings to the internal repository, such as Artifactory or the like. You can find the configuration file at:
     ```
     %USERPROFILE%\.m2\settings.xml
@@ -19,22 +37,13 @@
 
 ## Demo 1 - manual
 
-- download Apache Maven https://mirrors.ocf.berkeley.edu/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip
-- unzip and copy to `C:\Program Files\apache-maven`
-- prepare the environment
-```
-set JAVA_HOME=C:\Program Files\Java\jdk-11
-set PATH=C:\Program Files\apache-maven\bin;%PATH%
-```
-- verify that Apache Maven is installed correctly
-```
-mvn --version
-```
-- create a project folder
-```
-md maven-demo-1
-cd maven-demo-1
-```
+In this demo we will create a Maven based Java application literally from zero and make we will see how easy yet powerful it is.
+
+1. Create and navigate to the project folder:
+    ```
+    md maven-demo-1
+    cd maven-demo-1
+    ```
 - create a `pom.xml` file
 ```
 fsutil file createnew pom.xml 0
