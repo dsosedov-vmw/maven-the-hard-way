@@ -1,5 +1,22 @@
 # Maven demo
 
+## Prerequisites
+
+1. First we want to make sure that we `java` and `mvn` installed; and if one of them is not, we need to install them. To do that let's run the following:
+    ```
+    java -version
+    ```
+    and then
+    ```
+    mvn --version
+    ```
+1. Since Maven Central is not supported by your organization, you need to make sure you point your Maven settings to the internal repository, such as Artifactory or the like. You can find the configuration file at:
+    ```
+    %USERPROFILE%\.m2\settings.xml
+    ```
+    The Maven configuration is out of scope of this demo, you can find more information on [the Maven documentation site](https://maven.apache.org/settings.html).
+1. Optionally, you will need `git` and `python` to be able to checkout this repository and to run the generated documentation website locally.
+
 ## Demo 1 - manual
 
 - download Apache Maven https://mirrors.ocf.berkeley.edu/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip
