@@ -65,7 +65,7 @@ In this demo we will create a Maven based Java application literally from zero, 
         <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
         <modelVersion>4.0.0</modelVersion>
         <groupId>com.wellsfargo</groupId>
-        <artifactId>maven-demo</artifactId>
+        <artifactId>maven-demo-1</artifactId>
         <version>1.0-SNAPSHOT</version>
     </project>
     ```
@@ -190,7 +190,7 @@ In this demo we will create a Maven based Java application literally from zero, 
     ```
     and try to run the app:
     ```
-    java -jar target\maven-demo-1.0-SNAPSHOT.jar
+    java -jar target\maven-demo-1-1.0-SNAPSHOT.jar
     ```
     Although there is no error, the app will not actually run because when Maven packages it, it doesn't have enough information about the entrypoint. Let's provide it:
     ```xml
@@ -224,54 +224,71 @@ In this demo we will create a Maven based Java application literally from zero, 
 
 ## Demo 2 - Automated
 
-- create a new project
-```
-mvn archetype:generate -DgroupId=com.wellsfargo -DartifactId=maven-demo-2 -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
-cd mvn-demo-2
-```
-- change `App.java`
-```java
+This demo is similar to the previous one but unlike the previous one will enable us to leverage some of the Maven built-in automation to create a project.
+
+1. The following command will automatically generate and set up our new application:
+    ```
+    mvn archetype:generate "-DgroupId=com.wellsfargo" "-DartifactId=maven-demo-2" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DarchetypeVersion=1.4" "-DinteractiveMode=false"
+    ```
+    Let's navigate to the root of the project:
+    ```
+    cd maven-demo-2
+    ```
+1. Let's run some of the Maven commands from the previous demo:
+    ```
+    mvn validate
+    mvn compile
+    mvn test
+    ```
+1. Now we can change the code to make the application do what we want it to do:
+    ```java
     ...
-    System.out.println();
-    System.out.println("+=====================+");
-    System.out.println("| Hello Maven Demo 2! |");
-    System.out.println("+=====================+");
+        System.out.println();
+        System.out.println("+=====================+");
+        System.out.println("| Hello Maven Demo 2! |");
+        System.out.println("+=====================+");
     ...
-```
-- compile and test
-```
-mvn compile
-mvn test
-```
-- specify artifact in `pom.xml`
-```xml
+    ```
+    Also it is important to add configuration to the `jar` plugin, so we can generate an executable `jar` file as we did in the previous demo:
+    ```xml
     ...
-    <configuration>
-        <archive>
-            <manifest>
-                <mainClass>com.wellsfargo.App</mainClass>
-            </manifest>
-        </archive>
-    </configuration>
+        <configuration>
+            <archive>
+                <manifest>
+                    <mainClass>com.wellsfargo.App</mainClass>
+                </manifest>
+            </archive>
+        </configuration>
     ...
-```
-- create jar
-```
-mvn package
-```
-- run app
-```
-"%JAVA_HOME%"\bin\java -jar target\maven-demo-2-1.0-SNAPSHOT.jar
-```
-- generate site
-```
-mvn site
-cd target\site
-```
-- serve
-```
-python -m http.server 8081
-```
+    ```
+1. Let's package the application:
+    ```
+    mvn package
+    ```
+    and run it:
+    ```
+    java -jar target\maven-demo-2-1.0-SNAPSHOT.jar
+    ```
+    and this is the output we expect to see:
+    ```
+
+    +=====================+
+    | Hello Maven Demo 2! |
+    +=====================+
+
+    ```
+1. Let's take advantage of more Maven automation. One more thing that we can do is generate a static website with documentation for our application:
+    ```
+    mvn site
+    ```
+    Let's navigate to it:
+    ```
+    cd target\site
+    ```
+    and run a local server:
+    ```
+    python -m http.server 8081
+    ```
 
 ## Demo 3 - Spring
 
