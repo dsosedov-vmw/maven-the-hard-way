@@ -292,7 +292,10 @@ This demo is similar to the previous one but unlike the previous one will enable
 
 ## Demo 3 - Spring
 
-- let's create a simple Spring Boot web application
+The purpose of this demo is to go through how Maven can benefit from being extended to support the 12-factor app scenario.
 
-https://github.com/takari/maven-wrapper
+1. Generate a project at [Spring Initializr](https://start.spring.io).
 
+1. Look at the following resources: `.mvn` and `mvnw.cmd`.
+
+1. Find more information about Maven wrapper at [https://github.com/takari/maven-wrapper](https://github.com/takari/maven-wrapper).
