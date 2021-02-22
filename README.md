@@ -84,9 +84,9 @@ In this demo we will create a Maven based Java application literally from zero, 
     ```java
     package com.wellsfargo;
 
-    import static org.junit.jupiter.api.Assertions.assertTrue;
+    import static org.junit.Assert.assertTrue;
 
-    import org.junit.jupiter.api.Test;
+    import org.junit.Test;
 
     public class AppTest {
 
@@ -145,38 +145,12 @@ In this demo we will create a Maven based Java application literally from zero, 
 
         <dependencies>
             <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
-                <version>5.7.1</version>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.13.2</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
-
-        <build>
-            <plugins>
-                ...
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.22.0</version>
-                    <configuration>
-                        <argLine>
-                            --illegal-access=permit
-                        </argLine>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>2.22.0</version>
-                    <configuration>
-                        <argLine>
-                            --illegal-access=permit
-                        </argLine>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </build>
 
     ...
     ```
