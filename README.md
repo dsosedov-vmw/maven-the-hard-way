@@ -251,7 +251,21 @@ This demo is similar to the previous one but unlike the previous one will enable
     +=====================+
 
     ```
-1. Let's take advantage of more Maven automation. One more thing that we can do is generate a static website with documentation for our application:
+1. Let's take advantage of more Maven automation. One more thing that we can do is generate a static website with documentation for our application. First replace:
+    ```xml
+    ...
+    <artifactId>maven-site-plugin</artifactId>
+    <version>3.7.1</version>
+    ...
+    ```
+    with
+    ```xml
+    ...
+    <artifactId>maven-site-plugin</artifactId>
+    <version>3.9.1</version>
+    ...
+    ```
+    Then run:
     ```
     mvn site
     ```
